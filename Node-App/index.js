@@ -31,10 +31,10 @@ app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   );
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 //db connection
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/nodeApp', { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`)))
 .catch((error) => console.log(error.message));
 
